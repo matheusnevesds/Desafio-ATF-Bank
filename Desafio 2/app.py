@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Configurações de conexão com o banco de dados
-DATABASE_FILE = 'C:\Programação\Desafio ATF Bank\Desafio 2\Database.accdb'
+DATABASE_FILE = 'C:caminho-do-seu-data-base/Database.accdb'
 DRIVER = '{Microsoft Access Driver (*.mdb, *.accdb)}'
 
 # Função para obter a conexão com o banco de dados
