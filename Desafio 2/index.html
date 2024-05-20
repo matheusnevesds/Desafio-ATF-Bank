@@ -57,12 +57,12 @@ repeaterForm.addEventListener('submit', function (e) {
 
     // Obtém os campos de email e percentual
     const emails = Array.from(document.querySelectorAll('input[name="email"]'));
-    const participations = Array.from(document.querySelectorAll('input[name="percentual"]'));
+    const percentuais = Array.from(document.querySelectorAll('input[name="percentual"]'));
 
     // Cria um objeto com os dados
     const data = {
         "email": emails.map(email => email.value),
-        "percentual": participations.map(part => parseFloat(part.value))
+        "percentual": percentuais.map(part => parseFloat(part.value))
     };
 
 
@@ -80,12 +80,12 @@ repeaterForm.addEventListener('submit', function (e) {
             // Verifica se a soma dos percentuais é igual a 100%
             let totalParticipation = 0;
             for (let i = 0; i < data.percentual.length; i++) {
-                totalParticipation += data.percentual[i];
+                totalPercentual += data.percentual[i];
             }
 
             // Caso não seja, ele retorna um aviso e informa qual nûmero foi alcançado
-            if (totalParticipation !== 100) {
-                alert('A soma dos percentuais não alcançou 100%, o resultado somado foi de ' + totalParticipation);
+            if (totalPercentual !== 100) {
+                alert('A soma dos percentuais não alcançou 100%, o resultado somado foi de ' + totalPercentual);
                 return;
             
             }
