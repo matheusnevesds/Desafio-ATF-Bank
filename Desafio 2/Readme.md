@@ -33,7 +33,7 @@ Antes de executar os códigos, certifique-se de ter o seguinte instalado:
 4. Abra o arquivo `app.py` e configure o caminho para o seu arquivo de banco de dados:
 
     ```python
-    DATABASE_FILE = 'C:\Programação\Desafio ATF Bank\Desafio 2\Database.accdb'
+    DATABASE_FILE ='C:caminho-do-seu-data-base/Database.accdb'
     ```
 
 ## Executando o Servidor Flask
