@@ -1,98 +1,59 @@
-# Formulário 
+# Executando o Formulário com Repeater
 
-Este é um exemplo de um formulário HTML que utiliza um "repeater" para adicionar dinamicamente campos de participantes. O formulário permite que os usuários insiram seus emails e percentuais de participação.
+Este repositório contém um formulário HTML chamado `index.html` que utiliza um "repeater" para adicionar dinamicamente campos de participantes. O formulário permite que os usuários insiram seus emails e percentuais de participação.
 
-## Estrutura do Formulário
+## Pré-requisitos
 
-O formulário consiste em:
+Antes de executar o código, certifique-se de ter o seguinte instalado:
 
-1. Um campo de email.
-2. Um campo de percentual.
-3. Um botão para adicionar mais participantes (repetir o campo).
-4. Um botão para enviar o formulário.
+1. **Navegador Web**: Você precisará de um navegador web (como Google Chrome, Mozilla Firefox, etc.) para testar o formulário.
 
-## Funcionalidades
+## Configuração
 
-- **Adicionar Participante**: Clique no botão "+ Adicionar Participante" para criar um novo campo de participante.
-- **Remover Participante**: Cada campo de participante possui um botão "X" que permite removê-lo.
-- **Validações**:
-    - O formato do email é validado usando uma expressão regular.
-    - A soma dos percentuais é verificada para garantir que seja igual a 100%.
+1. Clone este repositório para o seu computador:
 
-## CSS (styles.css)
+    ```bash
+    git clone https://github.com/seu-usuario/seu-repositorio.git
+    ```
 
-O arquivo `styles.css` contém estilos para o formulário, como a formatação do contêiner e dos campos.
+2. Navegue até o diretório do projeto:
 
-```css
-/* styles.css */
+    ```bash
+    cd seu-repositorio
+    ```
 
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #f5f5f5;
-}
+3. Instale as dependências Python (Flask e pyodbc):
 
-.container {
-    width: 80%;
-    max-width: 600px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+    ```bash
+    pip install flask pyodbc
+    ```
 
-.repeater-item {
-    margin-bottom: 10px;
-}
-```
+4. Abra o arquivo `app.py` e configure o caminho para o seu arquivo de banco de dados:
 
-# JavaScript (index.html)
-O código JavaScript no arquivo index.html adiciona a funcionalidade de adicionar e remover participantes dinamicamente.
+    ```python
+    DATABASE_FILE = 'C:\Programação\Desafio ATF Bank\Desafio 2\Database.accdb'
+    ```
 
-```JavaScript
-// index.html
+## Testando o Formulário HTML
 
-// Obtém a referência ao formulário
-const repeaterForm = document.getElementById('repeaterForm');
+1. Abra o arquivo `index.html` em um navegador.
 
-// Obtém a referência ao contêiner de repetição
-const repeaterContainer = document.getElementById('repeaterContainer');
+2. Preencha os campos:
+    - **Email**: Insira um endereço de email válido.
+    - **Percentual**: Insira um valor numérico representando o percentual de participação.
 
-// Função para adicionar um novo item de participante
-function addItem() {
-    const newItem = document.createElement('div');
-    newItem.className = 'repeater-item';
-    newItem.innerHTML = `
-        <label for="email">Email:</label>
-        <input type="email" name="email" required>
-        <label for="percentual">Percentual:</label>
-        <input type="text" name="percentual">
-        <span>%</span>
-        <button type="button" onclick="removeItem(this)">X</button>
-    `;
-    repeaterContainer.appendChild(newItem);
-}
+3. Clique no botão "+ Adicionar Participante" para criar um novo campo de participante (repetir o campo).
 
-// Função para remover um item de participante
-function removeItem(button) {
-    button.parentElement.remove();
-}
+4. Preencha os campos adicionais conforme necessário.
 
-// Event listener para o envio do formulário
-repeaterForm.addEventListener('submit', function (e) {
-    e.preventDefault();
+5. Clique no botão "Salvar" para enviar o formulário.
 
-    const emails = Array.from(document.querySelectorAll('input[name="email"]'));
-    const participations = Array.from(document.querySelectorAll('input[name="percentual"]'));
+6. Os dados serão validados.
 
-    const data = {
-        "email": emails.map(email => email.value),
-        "percentual": participations.map(part => parseFloat(part.value))
-    };
+## Validações
 
-    // Implemente suas validações aqui
-});
+O formulário inclui as seguintes validações:
+
+- **Formato de Email**: O campo de email é validado usando uma expressão regular para garantir que seja um endereço de email válido.
+- **Soma dos Percentuais**: A soma dos percentuais inseridos deve ser igual a 100%. Caso contrário, um aviso será exibido.
+
